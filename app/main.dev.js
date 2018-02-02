@@ -12,6 +12,8 @@
  */
 import { app, BrowserWindow } from 'electron';
 import MenuBuilder from './menu';
+import url from 'url';
+import express from 'express';
 
 let mainWindow = null;
 
@@ -84,3 +86,35 @@ app.on('ready', async () => {
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
 });
+
+/**
+ * Start express HTTP server and listen on the specified redirect URL
+ */
+export async function waitCallback(redirectUri: string, options = {}) {
+  const { protocol, hostname, port, pathname } = url.parse(redirectUri);
+  if (protocol !== 'http:' || hostname !== 'localhost') {
+    throw new Error('redirectUri should be an http://localhost url');
+  }
+  return new Promise((resolve, reject) => {
+    const app = express();
+    app.get(pathname, async (req, res) => {
+      resolve(req.query);
+      res.send('<html><body><script>window.close()</script></body></html>');
+      setTimeout(shutdown, 100);
+    });
+    const server = app.listen(port);
+    const shutdown = (reason) => {
+      server.close();
+      if (reason) {
+        reject(new Error(reason));
+      }
+    };
+    if (options.timeout) {
+      setTimeout(() => shutdown('timeout'), options.timeout);
+    }
+  });
+}
+
+export function focusWin() {
+  if (mainWindow) { mainWindow.focus(); }
+}
