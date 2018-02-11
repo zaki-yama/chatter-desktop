@@ -86,6 +86,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@salesforce-ux/design-system@^2.5.2":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@salesforce-ux/design-system/-/design-system-2.5.2.tgz#454f2c0b0214a980b10fe817061c4b8c15c35276"
+
 "@types/node@*":
   version "9.3.0"
   resolved "https://registry.npmjs.org/@types/node/-/node-9.3.0.tgz#3a129cda7c4e5df2409702626892cb4b96546dd5"

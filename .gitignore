@@ -43,6 +43,7 @@ app/renderer.prod.js
 app/renderer.prod.js.map
 app/style.css
 app/style.css.map
+app/vendor
 dist
 dll
 main.js
