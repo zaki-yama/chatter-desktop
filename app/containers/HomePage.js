@@ -1,65 +1,8 @@
 // @flow
 import { connect } from 'react-redux';
-import { remote, shell } from 'electron';
-import crypto from 'crypto';
-import querystring from 'querystring';
-import base64url from 'base64-url';
-import axios from 'axios';
 
 import Home from '../components/Home';
-
-const { focusWin, waitCallback } = remote.require('./main.dev');
-
-/**
- * Salesforce OAuth2 endpoints
- */
-const authzEndpointUrl = 'https://login.salesforce.com/services/oauth2/authorize';
-const tokenEndpointUrl = 'https://login.salesforce.com/services/oauth2/token';
-
-// client id can be included in the app. it is NOT secret.
-const clientId = '3MVG9A2kN3Bn17hv5Z.MnUUfJRedqHjIOTrCsnDtLbs1KD7bz0wTBM0ess02tdrA8qEppwYNLoxSEugmHNYCZ';
-// specify the same redirect URI in the connected app. The port number should be carefully chosen not to conflict to others
-const redirectUri = 'http://localhost:33201/oauth2/callback';
-
-/**
- * Execute OAuth2 Authz Code Flow and get tokens
- */
-async function startAuth() {
-  // code verifier value is generated randomly and base64url-encoded
-  const verifier = base64url.encode(crypto.randomBytes(32));
-  // code challenge value is sha256-hashed value of the verifier, base64url-encoded.
-  const challenge = base64url.encode(crypto.createHash('sha256').update(verifier).digest());
-  // attach code challenge when requesting to authorization server
-  const authzUrl = authzEndpointUrl + '?' + querystring.stringify({
-    response_type: 'code',
-    client_id: clientId,
-    redirect_uri: redirectUri,
-    code_challenge: challenge,
-  });
-  // open authorization url in OS standard browser
-  shell.openExternal(authzUrl);
-  // start temporary server in the redirect url. wait for callback from the authorization server
-  const { code } = await waitCallback(redirectUri);
-  // bring back the focus to this application as it opens OS browser
-  focusWin();
-  // add code verifier in token request.
-  // client secret is not needed. All electron app should be public client.
-  const ret = await axios({
-    method: 'post',
-    url: tokenEndpointUrl,
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-    },
-    data: querystring.stringify({
-      grant_type: 'authorization_code',
-      code,
-      client_id: clientId,
-      redirect_uri: redirectUri,
-      code_verifier: verifier,
-    }),
-  });
-  return ret.data;
-}
+import startAuth from '../utils/auth';
 
 const mapStateToProps = (state) => ({
   loading: state.loading,
