@@ -1,0 +1,21 @@
+// @flow
+import { connect } from 'react-redux';
+import FeedItem from '../components/FeedItem';
+import { fetchMyFeed } from '../api';
+
+const mapStateToProps = (state) => ({
+  feedItems: state.feedItems,
+  tokens: state.tokens,
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onMount: async () => {
+    dispatch({ type: 'LOADING_START' });
+    const feedItems = await fetchMyFeed(ownProps.tokens);
+    dispatch({ type: 'FETCH_FEED_ITEMS', payload: feedItems });
+    dispatch({ type: 'LOADING_END' });
+  }
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedItem);

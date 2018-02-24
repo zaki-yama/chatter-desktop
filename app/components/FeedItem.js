@@ -108,6 +108,10 @@ function Comment(props) {
 }
 
 export default class FeedItem extends React.Component {
+  componentDidMount() {
+    this.props.onMount();
+  }
+
   render() {
     return (
       <li className="slds-feed__item">

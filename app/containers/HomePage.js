@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: async () => {
+  onClickLogin: async () => {
     dispatch({ type: 'LOGIN_START' });
     try {
       const tokens = await startAuth();
