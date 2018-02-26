@@ -56,3 +56,19 @@ export default async function startAuth() {
   });
   return ret.data;
 }
+
+export async function refreshToken(refreshToken) {
+  const ret = await axios({
+    method: 'post',
+    url: tokenEndpointUrl,
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+    },
+    data: querystring.stringify({
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken,
+      client_id: clientId,
+    }),
+  });
+  return ret.data;
+}
