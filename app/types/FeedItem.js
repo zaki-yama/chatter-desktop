@@ -40,14 +40,14 @@ export type FeedItem = {
   // capabilities: FeedElementCapabilities,
   // clientInfo: ClientInfo,
   // comments: Array<Comment>, -> capabilities.comments.page
-  createdDate: Date,
+  createdDate: string,
   // currentUserLike:
   event: boolean,
   header: any,
   isLikedByCurrentUser: boolean,
   // likes: LikePage, -> capabilities.chatterLikes.page
   // likeMessage:
-  modifiedDate: date,
+  modifiedDate: string,
   url: string,
   visibility: string
 };
