@@ -1,6 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import FeedItem from '../components/FeedItem';
+import Feed from '../components/Feed';
 import { fetchMyFeed } from '../api';
 
 const mapStateToProps = (state) => ({
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(FeedItem);
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);
