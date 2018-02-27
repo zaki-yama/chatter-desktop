@@ -41,6 +41,7 @@ export type FeedItem = {
   // clientInfo: ClientInfo,
   // comments: Array<Comment>, -> capabilities.comments.page
   createdDate: string,
+  relativeCreatedDate: string,
   // currentUserLike:
   event: boolean,
   header: any,

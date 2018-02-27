@@ -1,9 +1,10 @@
 // @flow
 import React, { Component } from 'react';
-import type { FeedItem } from '../types/FeedItem';
+import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
+import FeedItem from './FeedItem';
 
 type Props = {
-  feedItems: Array<FeedItem>,
+  feedItems: Array<FeedItemPropsType>,
   onMount: () => void
 };
 
@@ -18,10 +19,12 @@ export default class Feed extends Component<Props> {
 
   render() {
     return (
-      <div>
-        {this.props.feedItems.map(feedItem => {
-          return <p>{feedItem.id}</p>;
-        })}
+      <div className="slds-feed">
+        <ul className="slds-feed__list">
+          {this.props.feedItems.map(feedItem => {
+            return <FeedItem item={feedItem} tokens={this.props.tokens}/>;
+          })}
+        </ul>
       </div>
     );
   }
