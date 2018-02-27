@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
             console.log('err', err);
             reject(err);
           } else {
-            console.log('OK', data);
+            console.log('Use stored tokens', data);
             resolve(data);
           }
         });
