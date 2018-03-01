@@ -7,7 +7,8 @@ import FeedItem from './FeedItem';
 type Props = {
   feedItems: Array<FeedItemPropsType>,
   loading: boolean,
-  onMount: () => void
+  onMount: () => void,
+  tick: () => void
 };
 
 function Spinner() {
@@ -18,7 +19,11 @@ function Spinner() {
   );
 }
 
+const RELOAD_INTERVAL = 15 * 60 * 1000;
+
 export default class Feed extends Component<Props> {
+  intervalId: IntervalID;
+
   static defaultProps = {
     loading: false,
     feedItems: [],
@@ -26,6 +31,11 @@ export default class Feed extends Component<Props> {
 
   componentDidMount() {
     this.props.onMount();
+    this.intervalId = setInterval(this.props.tick, RELOAD_INTERVAL);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
   }
 
   render() {

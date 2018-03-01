@@ -15,7 +15,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     const feedItems = await fetchMyFeed(ownProps.tokens);
     dispatch({ type: 'FETCH_FEED_ITEMS', payload: feedItems });
     dispatch({ type: 'LOADING_END' });
-  }
+  },
+
+  tick: async () => {
+    dispatch({ type: 'LOADING_START' });
+    const feedItems = await fetchMyFeed(ownProps.tokens);
+    dispatch({ type: 'FETCH_FEED_ITEMS', payload: feedItems });
+    dispatch({ type: 'LOADING_END' });
+  },
 });
 
 
