@@ -34,7 +34,7 @@ export default class Feed extends Component<Props> {
         <div className="slds-feed">
           <ul className="slds-feed__list">
             {this.props.feedItems.map(feedItem => {
-              return <FeedItem item={feedItem} />;
+              return <FeedItem item={feedItem} key={feedItem.id} />;
             })}
           </ul>
         </div>
