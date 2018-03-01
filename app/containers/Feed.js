@@ -6,6 +6,7 @@ import { fetchMyFeed } from '../api';
 const mapStateToProps = (state) => ({
   feedItems: state.feedItems,
   tokens: state.tokens,
+  loading: state.loading,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
