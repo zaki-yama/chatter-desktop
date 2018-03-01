@@ -13,7 +13,7 @@ const authzEndpointUrl = 'https://login.salesforce.com/services/oauth2/authorize
 const tokenEndpointUrl = 'https://login.salesforce.com/services/oauth2/token';
 
 // client id can be included in the app. it is NOT secret.
-const clientId = '3MVG9A2kN3Bn17hv5Z.MnUUfJRedqHjIOTrCsnDtLbs1KD7bz0wTBM0ess02tdrA8qEppwYNLoxSEugmHNYCZ';
+const clientId = '3MVG9I1kFE5Iul2BYKzI252s0YBhwFXki2TumX45xYKsTYAu4gz0679fqflPmwGN5YHsAdhH6frIt82CnxxLd';
 // specify the same redirect URI in the connected app. The port number should be carefully chosen not to conflict to others
 const redirectUri = 'http://localhost:33201/oauth2/callback';
 
