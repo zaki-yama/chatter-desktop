@@ -133,7 +133,7 @@ export default class FeedItem extends Component<Props> {
         <article className="slds-post">
           <Header
             name={this.props.item.actor.displayName}
-            photoUrl={`${this.props.item.actor.photo.smallPhotoUrl}?oauth_token=${this.props.tokens.access_token}`}
+            photoUrl={this.props.item.actor.photo.standardEmailPhotoUrl}
             relativeCreatedDate={this.props.item.relativeCreatedDate}
           />
           <Content text={this.props.item.body.text} />
