@@ -1,10 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import { util } from 'react-lightning-design-system';
 import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 // import './app.global.css';
 
+util.setAssetRoot('vendor/lds');
 const store = configureStore();
 
 render(

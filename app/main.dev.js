@@ -8,12 +8,12 @@
  * When running `npm run build` or `npm run build-main`, this file is compiled to
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  *
- * @flow
  */
 import { app, BrowserWindow } from 'electron';
-import MenuBuilder from './menu';
 import url from 'url';
 import express from 'express';
+
+import MenuBuilder from './menu';
 
 let mainWindow = null;
 
