@@ -2,3 +2,4 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+@import "~@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css";
