@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-// import styles from './Home.css';
 import { Button } from 'react-lightning-design-system';
 import Feed from '../containers/Feed';
 
