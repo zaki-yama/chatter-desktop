@@ -4,7 +4,8 @@ import querystring from 'querystring';
 import base64url from 'base64-url';
 import axios from 'axios';
 
-const { focusWin, waitCallback } = remote.require('./main.dev');
+const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+const { focusWin, waitCallback } = remote.require(`./main.${env}`);
 
 /**
  * Salesforce OAuth2 endpoints
