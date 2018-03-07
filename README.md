@@ -1,7 +1,7 @@
 Yet Another Chatter Desktop
 ===========================
 
-### An unofficial Chatter Desktop made with Electron
+### Unofficial Chatter Desktop App made with Electron
 
 <br/>
 
