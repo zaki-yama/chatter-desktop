@@ -108,6 +108,7 @@ function Footer() {
   );
 }
 
+/* TODO
 function Comment(props) {
   return (
     <article className="slds-comment slds-media slds-hint-parent">
@@ -141,6 +142,7 @@ function Comment(props) {
     </article>
   );
 }
+*/
 
 export default class FeedItem extends Component<Props> {
   render() {
