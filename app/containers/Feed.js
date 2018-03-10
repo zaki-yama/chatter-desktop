@@ -5,7 +5,7 @@ import { fetchMyFeed } from '../api';
 
 const mapStateToProps = (state) => ({
   feedItems: state.feedItems,
-  tokens: state.tokens,
+  instanceUrl: state.tokens.instanceUrl,
   loading: state.loading,
 });
 

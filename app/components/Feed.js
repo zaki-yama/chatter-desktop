@@ -6,6 +6,7 @@ import FeedItem from './FeedItem';
 
 type Props = {
   feedItems: Array<FeedItemPropsType>,
+  instanceUrl: string,
   loading: boolean,
   onMount: () => void,
   tick: () => void
@@ -43,7 +44,13 @@ export default class Feed extends Component<Props> {
       <div>
         <div className="slds-feed">
           <ul className="slds-feed__list">
-            {this.props.feedItems.map(feedItem => <FeedItem item={feedItem} key={feedItem.id} />)}
+            {this.props.feedItems.map(feedItem => (
+              <FeedItem
+                key={feedItem.id}
+                item={feedItem}
+                instanceUrl={this.props.instanceUrl}
+              />
+            ))}
           </ul>
         </div>
         {this.props.loading ? <Spinner /> : null}
