@@ -4,8 +4,8 @@ import { refreshToken } from '../utils/auth';
 // eslint-disable-next-line import/prefer-default-export
 export async function fetchMyFeed(tokens) {
   const conn = new jsforce.Connection({
-    instanceUrl: tokens.instance_url,
-    accessToken: tokens.access_token,
+    instanceUrl: tokens.instanceUrl,
+    accessToken: tokens.accessToken,
     // you can change loginUrl to connect to sandbox or prerelease env.
     // loginUrl : 'https://test.salesforce.com'
   });
