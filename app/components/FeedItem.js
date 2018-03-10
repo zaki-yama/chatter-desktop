@@ -62,7 +62,7 @@ function Header(props: HeaderProps) {
 }
 
 type ContentProps = {
-  text: string
+  text: ?string
 };
 
 function Content(props: ContentProps) {
