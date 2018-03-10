@@ -9,7 +9,7 @@
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  *
  */
-import { app, BrowserWindow } from 'electron';
+import { app, shell, BrowserWindow } from 'electron';
 import url from 'url';
 import express from 'express';
 
@@ -66,7 +66,10 @@ app.on('ready', async () => {
     width: 1024,
     height: 728
   });
-
+  mainWindow.webContents.on('new-window', (event, url) => { // eslint-disable-line no-shadow
+    event.preventDefault();
+    shell.openExternal(url);
+  });
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 
   // @TODO: Use 'ready-to-show' event
