@@ -3,12 +3,16 @@ import { Button } from 'react-lightning-design-system';
 import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
 
 type Props = {
-  item: FeedItemPropsType
+  item: FeedItemPropsType,
+  instanceUrl: string
 };
 
 type HeaderProps = {
+  id: string,
+  instanceUrl: string,
   photoUrl: string,
   name: string,
+  actorId: string,
   relativeCreatedDate: string
 };
 
@@ -16,7 +20,11 @@ function Header(props: HeaderProps) {
   return (
     <header className="slds-post__header slds-media">
       <div className="slds-media__figure">
-        <a href="javascript:void(0);" className="slds-avatar slds-avatar_circle slds-avatar_large">
+        <a
+          className="slds-avatar slds-avatar_circle slds-avatar_large"
+          href={`${props.instanceUrl}/${props.actorId}`}
+          target="_blank"
+        >
           <img
             alt={props.name}
             src={props.photoUrl}
@@ -26,7 +34,7 @@ function Header(props: HeaderProps) {
       </div>
       <div className="slds-media__body">
         <div className="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-          <p><a href="javascript:void(0);" title={props.name}>{props.name}</a></p>
+          <p><a href={`${props.instanceUrl}/${props.actorId}`} target="_blank" title={props.name}>{props.name}</a></p>
           <button
             className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
             aria-haspopup="true"
@@ -38,7 +46,16 @@ function Header(props: HeaderProps) {
             <span className="slds-assistive-text">More Options</span>
           </button>
         </div>
-        <p className="slds-text-body_small"><a href="javascript:void(0);" title="Click for single-item view of this post" className="slds-text-link_reset">{props.relativeCreatedDate}</a></p>
+        <p className="slds-text-body_small">
+          <a
+            className="slds-text-link_reset"
+            href={`${props.instanceUrl}/${props.id}`}
+            target="_blank"
+            title="Click for single-item view of this post"
+          >
+            {props.relativeCreatedDate}
+          </a>
+        </p>
       </div>
     </header>
   );
@@ -132,9 +149,12 @@ export default class FeedItem extends Component<Props> {
       <li className="slds-feed__item">
         <article className="slds-post">
           <Header
+            id={this.props.item.id}
             name={this.props.item.actor.displayName}
+            actorId={this.props.item.actor.id}
             photoUrl={this.props.item.actor.photo.standardEmailPhotoUrl}
             relativeCreatedDate={this.props.item.relativeCreatedDate}
+            instanceUrl={this.props.instanceUrl}
           />
           <Content text={this.props.item.body.text} />
           <Footer />
