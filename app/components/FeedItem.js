@@ -48,7 +48,7 @@ function Header(props: HeaderProps) {
         </div>
         <p className="slds-text-body_small">
           <a
-            className="slds-text-link_reset"
+            className="slds-text-color_weak"
             href={`${props.instanceUrl}/${props.id}`}
             target="_blank"
             title="Click for single-item view of this post"
