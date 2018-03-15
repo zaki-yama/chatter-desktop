@@ -1,8 +1,10 @@
+// @flow
 import jsforce from 'jsforce';
 import { refreshToken } from '../utils/auth';
+import type { Tokens } from '../types';
 
 // eslint-disable-next-line import/prefer-default-export
-export async function fetchMyFeed(tokens) {
+export async function fetchMyFeed(tokens: Tokens) {
   const conn = new jsforce.Connection({
     instanceUrl: tokens.instanceUrl,
     accessToken: tokens.accessToken,
