@@ -1,8 +1,10 @@
+// @flow
 import jsforce from 'jsforce';
 import { refreshToken } from '../utils/auth';
+import type { Tokens } from '../types';
 
 // eslint-disable-next-line import/prefer-default-export
-export async function fetchMyFeed(tokens) {
+export async function fetchMyFeed(tokens: Tokens) {
   const conn = new jsforce.Connection({
     instanceUrl: tokens.instanceUrl,
     accessToken: tokens.accessToken,
@@ -14,7 +16,7 @@ export async function fetchMyFeed(tokens) {
     return result.elements;
   } catch (err) {
     if (err.errorCode === 'INVALID_SESSION_ID') {
-      const newTokens = await refreshToken(tokens.refresh_token);
+      const newTokens = await refreshToken(tokens.refreshToken);
       conn.accessToken = newTokens.access_token;
       console.log('New access token', newTokens);
       const result = await conn.chatter.resource('/feeds/news/me/feed-elements').promise();
