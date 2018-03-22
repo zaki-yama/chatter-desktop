@@ -6,7 +6,7 @@ import Routes from '../routes';
 
 type RootType = {
   store: {},
-  history: {}
+  history: {},
 };
 
 export default function Root({ store, history }: RootType) {

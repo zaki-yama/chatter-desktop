@@ -1,23 +1,20 @@
 // @flow
-type FeedElementType =
-  'Bundle' |
-  'FeedItem' |
-  'Recommendation';
+type FeedElementType = 'Bundle' | 'FeedItem' | 'Recommendation';
 
 type EntityLabel = {
   label: string,
-  labelPlural: string
+  labelPlural: string,
 };
 
 type RecordSummary = {
   entityLabel: EntityLabel,
-  id: string
+  id: string,
   // motif:
   // name:
 };
 
 type Photo = {
-  smallPhotoUrl: string
+  smallPhotoUrl: string,
 };
 
 type UserSummary = {
@@ -27,7 +24,13 @@ type UserSummary = {
   // motif:
   photo: Photo,
   url: string, // URL to the user's Chatter profile
-  userType: 'ChatterGuest' | 'ChatterOnly' | 'Guest' | 'Internal' | 'Portal' | 'System' | 'Undefined'
+  userType: | 'ChatterGuest'
+    | 'ChatterOnly'
+    | 'Guest'
+    | 'Internal'
+    | 'Portal'
+    | 'System'
+    | 'Undefined',
 };
 
 type Actor = RecordSummary | UserSummary;
@@ -50,7 +53,7 @@ export type FeedItem = {
   // likeMessage:
   modifiedDate: string,
   url: string,
-  visibility: string
+  visibility: string,
 };
 
 // type GenericFeedElement = {

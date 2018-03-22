@@ -22,7 +22,10 @@ if (process.env.NODE_ENV === 'production') {
   sourceMapSupport.install();
 }
 
-if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
+if (
+  process.env.NODE_ENV === 'development' ||
+  process.env.DEBUG_PROD === 'true'
+) {
   require('electron-debug')();
   const path = require('path');
   const p = path.join(__dirname, '..', 'app', 'node_modules');
@@ -32,16 +35,10 @@ if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true')
 const installExtensions = async () => {
   const installer = require('electron-devtools-installer');
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-  const extensions = [
-    'REACT_DEVELOPER_TOOLS',
-    'REDUX_DEVTOOLS'
-  ];
+  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
 
-  return Promise
-    .all(extensions.map(name => installer.default(installer[name], forceDownload)))
-    .catch(console.log);
+  return Promise.all(extensions.map(name => installer.default(installer[name], forceDownload))).catch(console.log);
 };
-
 
 /**
  * Add event listeners...
@@ -55,18 +52,21 @@ app.on('window-all-closed', () => {
   }
 });
 
-
 app.on('ready', async () => {
-  if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
+  if (
+    process.env.NODE_ENV === 'development' ||
+    process.env.DEBUG_PROD === 'true'
+  ) {
     await installExtensions();
   }
 
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728
+    height: 728,
   });
-  mainWindow.webContents.on('new-window', (event, url) => { // eslint-disable-line no-shadow
+  mainWindow.webContents.on('new-window', (event, url) => {
+    // eslint-disable-line no-shadow
     event.preventDefault();
     shell.openExternal(url);
   });
@@ -94,7 +94,9 @@ app.on('ready', async () => {
  * Start express HTTP server and listen on the specified redirect URL
  */
 export async function waitCallback(redirectUri: string, options = {}) {
-  const { protocol, hostname, port, pathname } = url.parse(redirectUri);
+  const {
+    protocol, hostname, port, pathname,
+  } = url.parse(redirectUri);
   if (protocol !== 'http:' || hostname !== 'localhost') {
     throw new Error('redirectUri should be an http://localhost url');
   }
@@ -106,7 +108,7 @@ export async function waitCallback(redirectUri: string, options = {}) {
       setTimeout(shutdown, 100);
     });
     const server = app.listen(port);
-    const shutdown = (reason) => {
+    const shutdown = reason => {
       server.close();
       if (reason) {
         reject(new Error(reason));
@@ -119,5 +121,7 @@ export async function waitCallback(redirectUri: string, options = {}) {
 }
 
 export function focusWin() {
-  if (mainWindow) { mainWindow.focus(); }
+  if (mainWindow) {
+    mainWindow.focus();
+  }
 }

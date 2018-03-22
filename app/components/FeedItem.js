@@ -4,7 +4,7 @@ import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
 
 type Props = {
   item: FeedItemPropsType,
-  instanceUrl: string
+  instanceUrl: string,
 };
 
 type HeaderProps = {
@@ -13,7 +13,7 @@ type HeaderProps = {
   photoUrl: string,
   name: string,
   actorId: string,
-  relativeCreatedDate: string
+  relativeCreatedDate: string,
 };
 
 function Header(props: HeaderProps) {
@@ -34,14 +34,25 @@ function Header(props: HeaderProps) {
       </div>
       <div className="slds-media__body">
         <div className="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-          <p><a href={`${props.instanceUrl}/${props.actorId}`} target="_blank" title={props.name}>{props.name}</a></p>
+          <p>
+            <a
+              href={`${props.instanceUrl}/${props.actorId}`}
+              target="_blank"
+              title={props.name}
+            >
+              {props.name}
+            </a>
+          </p>
           <button
             className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
             aria-haspopup="true"
             title="More Options"
           >
             <svg className="slds-button__icon" aria-hidden="true">
-              <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down" />
+              <use
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              />
             </svg>
             <span className="slds-assistive-text">More Options</span>
           </button>
@@ -62,7 +73,7 @@ function Header(props: HeaderProps) {
 }
 
 type ContentProps = {
-  text: ?string
+  text: ?string,
 };
 
 function Content(props: ContentProps) {
