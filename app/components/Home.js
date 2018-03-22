@@ -7,23 +7,24 @@ import Feed from '../containers/Feed';
 type Props = {
   loading: boolean,
   tokens: Object,
-  onClickLogin: SyntheticEvent<> => void
+  onClickLogin: (SyntheticEvent<>) => void,
 };
 
 export default class Home extends Component<Props> {
   render() {
     return (
       <div>
-        {
-          this.props.tokens ? <Feed tokens={this.props.tokens} /> :
-            <Button
-              type="neutral"
-              onClick={this.props.loading ? undefined : this.props.onClickLogin}
-              disabled={this.props.loading}
-            >
-                Login
-            </Button>
-        }
+        {this.props.tokens ? (
+          <Feed tokens={this.props.tokens} />
+        ) : (
+          <Button
+            type="neutral"
+            onClick={this.props.loading ? undefined : this.props.onClickLogin}
+            disabled={this.props.loading}
+          >
+            Login &lt;script&gt;alert(&#39;foo&#39;);&lt;/script&gt;
+          </Button>
+        )}
       </div>
     );
   }

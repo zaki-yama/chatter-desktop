@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Feed from '../components/Feed';
 import { fetchMyFeed } from '../api';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   feedItems: state.feedItems,
   instanceUrl: state.tokens.instanceUrl,
   loading: state.loading,
@@ -24,6 +24,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch({ type: 'LOADING_END' });
   },
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);

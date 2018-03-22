@@ -9,7 +9,7 @@ type Props = {
   instanceUrl: string,
   loading: boolean,
   onMount: () => void,
-  tick: () => void
+  tick: () => void,
 };
 
 function Spinner() {
