@@ -22,7 +22,7 @@ export default class Home extends Component<Props> {
             onClick={this.props.loading ? undefined : this.props.onClickLogin}
             disabled={this.props.loading}
           >
-            Login &lt;script&gt;alert(&#39;foo&#39;);&lt;/script&gt;
+            Login
           </Button>
         )}
       </div>
