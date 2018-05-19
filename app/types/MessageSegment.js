@@ -70,3 +70,5 @@ type MarkupEnd = {
     | 'UnorderedList',
   text: '',
 };
+
+export type MessageSegment;
