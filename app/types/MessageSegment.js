@@ -1,6 +1,4 @@
 // @flow
-type messageSegment = Mention | Link | MarkupBegin | MarkupEnd;
-
 type Mention = {
   type: 'Mention',
   accessible: boolean,
@@ -71,4 +69,4 @@ type MarkupEnd = {
   text: '',
 };
 
-export type MessageSegment;
+export type MessageSegment = Mention | Link | MarkupBegin | MarkupEnd;
