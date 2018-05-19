@@ -37,7 +37,7 @@ type UserSummary = {
 
 type Actor = RecordSummary | UserSummary;
 
-type FeedItemBody = {
+export type FeedItemBody = {
   isRichText: boolean,
   messageSegments: Array<MessageSegment>,
   text: string,
