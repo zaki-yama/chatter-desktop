@@ -23,6 +23,5 @@ function parseMessageSegment(messageSegment: MessageSegment): string {
       return `</${messageSegment.htmlTag}>`;
     default:
       return '';
-
   }
 }
