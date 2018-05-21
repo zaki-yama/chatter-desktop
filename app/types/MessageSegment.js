@@ -1,4 +1,14 @@
 // @flow
+/**
+ * Type Definition of `Message Segment` of `Feed Item Body`
+ * ref. https://developer.salesforce.com/docs/atlas.en-us.212.0.chatterapi.meta/chatterapi/connect_responses_feed_item_body.htm
+ */
+
+type Text = {
+  type: 'Text',
+  text: string,
+};
+
 type Mention = {
   type: 'Mention',
   accessible: boolean,
@@ -69,4 +79,4 @@ type MarkupEnd = {
   text: '',
 };
 
-export type MessageSegment = Mention | Link | MarkupBegin | MarkupEnd;
+export type MessageSegment = Text | Mention | Link | MarkupBegin | MarkupEnd;
