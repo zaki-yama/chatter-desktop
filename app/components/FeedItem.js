@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Button } from 'react-lightning-design-system';
+
+import { parseFeedItemBody } from '../utils/bodyParser';
+
 import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
 
 type Props = {
@@ -78,7 +81,10 @@ type ContentProps = {
 
 function Content(props: ContentProps) {
   return (
-    <div className="slds-post__content slds-text-longform">{props.text}</div>
+    <div
+      className="slds-post__content slds-text-longform"
+      dangerouslySetInnerHTML={{ __html: props.text }}
+    />
   );
 }
 
@@ -169,7 +175,7 @@ export default class FeedItem extends Component<Props> {
             relativeCreatedDate={this.props.item.relativeCreatedDate}
             instanceUrl={this.props.instanceUrl}
           />
-          <Content text={this.props.item.body.text} />
+          <Content text={parseFeedItemBody(this.props.item.body)} />
           <Footer />
         </article>
       </li>
