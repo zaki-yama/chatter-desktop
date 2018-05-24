@@ -26,7 +26,7 @@ type UserSummary = {
   // motif:
   photo: Photo,
   url: string, // URL to the user's Chatter profile
-  userType: | 'ChatterGuest'
+  userType: 'ChatterGuest'
     | 'ChatterOnly'
     | 'Guest'
     | 'Internal'

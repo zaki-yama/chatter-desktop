@@ -21,7 +21,7 @@ type Mention = {
 type Group = {
   id: string,
   type: 'CollaborationGroup',
-  myRole: | 'GroupOwner'
+  myRole: 'GroupOwner'
     | 'GroupManager'
     | 'NotAMember'
     | 'NotAMemberPrivateRequested'
@@ -52,7 +52,7 @@ type Reference = {
 type MarkupBegin = {
   type: 'MarkupBegin',
   htmlTag: string,
-  markupType: | 'Bold'
+  markupType: 'Bold'
     | 'Code'
     | 'Italic'
     | 'ListItem'
@@ -67,7 +67,7 @@ type MarkupBegin = {
 type MarkupEnd = {
   type: 'MarkupEnd',
   htmlTag: string,
-  markupType: | 'Bold'
+  markupType: 'Bold'
     | 'Code'
     | 'Italic'
     | 'ListItem'
