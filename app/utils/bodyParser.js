@@ -18,6 +18,8 @@ function parseMessageSegment(messageSegment: MessageSegment): string {
     case 'MarkupEnd':
       return `</${messageSegment.htmlTag}>`;
     default:
-      return '';
+      // FIXME: Temporarily return raw text until I support all messageSegment type.
+      // Change to return '' (empty text)
+      return messageSegment.text;
   }
 }
