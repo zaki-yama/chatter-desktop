@@ -6,7 +6,7 @@ import type { FeedItemBody } from '../types/FeedItem';
 export function parseFeedItemBody(body: FeedItemBody): string {
   return body.isRichText
     ? parseMessageSegments(body.messageSegments)
-    : body.text;
+    : body.text.replace(/u200B/g, '').replace(/\n/g, '<br>');
 }
 
 function parseMessageSegments(messageSegments: Array<MessageSegment>) {
@@ -16,7 +16,8 @@ function parseMessageSegments(messageSegments: Array<MessageSegment>) {
 function parseMessageSegment(messageSegment: MessageSegment): string {
   switch (messageSegment.type) {
     case 'Text':
-      return messageSegment.text;
+      // Need to remove zero width space (u200B)
+      return messageSegment.text.replace(/\u200B/g, '').replace(/\n/g, '<br>');
     case 'MarkupBegin':
       return `<${messageSegment.htmlTag}>`;
     case 'MarkupEnd':
