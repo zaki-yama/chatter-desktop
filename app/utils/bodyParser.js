@@ -19,6 +19,8 @@ function parseMessageSegment(messageSegment: MessageSegment, instanceUrl: string
       return `<${messageSegment.htmlTag}>`;
     case 'MarkupEnd':
       return `</${messageSegment.htmlTag}>`;
+    case 'Link':
+      return `<a href="${messageSegment.url}" target="_blank">${messageSegment.text}</a>`;
     default:
       // FIXME: Temporarily return raw text until I support all messageSegment type.
       // Change to return '' (empty text)
