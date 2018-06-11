@@ -176,7 +176,7 @@ export default class FeedItem extends Component<Props> {
             relativeCreatedDate={this.props.item.relativeCreatedDate}
             instanceUrl={this.props.instanceUrl}
           />
-          <Content text={parseFeedItemBody(this.props.item.body)} />
+          <Content text={parseFeedItemBody(this.props.item.body, this.props.instanceUrl)} />
           <Footer />
         </article>
       </li>
