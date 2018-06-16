@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Button } from 'react-lightning-design-system';
+import { Button, Icon } from 'react-lightning-design-system';
+
+import { parseFeedItemBody } from '../utils/bodyParser';
+
 import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
 
 type Props = {
@@ -78,39 +81,43 @@ type ContentProps = {
 
 function Content(props: ContentProps) {
   return (
-    <div className="slds-post__content slds-text-longform">{props.text}</div>
+    <div
+      className="slds-post__content slds-text-longform"
+      dangerouslySetInnerHTML={{ __html: props.text }}
+    />
   );
 }
 
+// slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle
 function Footer() {
   return (
     <footer className="slds-post__footer">
       <ul className="slds-post__footer-actions-list slds-list_horizontal">
         <li className="slds-col slds-item slds-m-right_medium">
           <Button
-            icon="like"
             title="Like this item"
             className="slds-button_reset slds-post__footer-action"
             aria-pressed="false"
           >
+            <Icon category="utility" icon="like" size="x-small" className="slds-icon-text-default slds-align-middle" />
             Like
           </Button>
         </li>
         <li className="slds-col slds-item slds-m-right_medium">
           <Button
-            icon="share_post"
             title="Comment on this item"
             className="slds-button_reset slds-post__footer-action"
           >
+            <Icon category="utility" icon="share_post" size="x-small" className="slds-icon-text-default slds-align-middle" />
             Comment
           </Button>
         </li>
         <li className="slds-col slds-item slds-m-right_medium">
           <Button
-            icon="share"
             title="Share this item"
             className="slds-button_reset slds-post__footer-action"
           >
+            <Icon category="utility" icon="share" size="x-small" className="slds-icon-text-default slds-align-middle" />
             Share
           </Button>
         </li>
@@ -169,7 +176,7 @@ export default class FeedItem extends Component<Props> {
             relativeCreatedDate={this.props.item.relativeCreatedDate}
             instanceUrl={this.props.instanceUrl}
           />
-          <Content text={this.props.item.body.text} />
+          <Content text={parseFeedItemBody(this.props.item.body, this.props.instanceUrl)} />
           <Footer />
         </article>
       </li>

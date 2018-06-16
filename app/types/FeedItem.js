@@ -1,4 +1,6 @@
 // @flow
+import type { MessageSegment } from './MessageSegment';
+
 type FeedElementType = 'Bundle' | 'FeedItem' | 'Recommendation';
 
 type EntityLabel = {
@@ -24,7 +26,7 @@ type UserSummary = {
   // motif:
   photo: Photo,
   url: string, // URL to the user's Chatter profile
-  userType: | 'ChatterGuest'
+  userType: 'ChatterGuest'
     | 'ChatterOnly'
     | 'Guest'
     | 'Internal'
@@ -34,12 +36,19 @@ type UserSummary = {
 };
 
 type Actor = RecordSummary | UserSummary;
+
+export type FeedItemBody = {
+  isRichText: boolean,
+  messageSegments: Array<MessageSegment>,
+  text: string,
+};
+
 export type FeedItem = {
   id: string,
   feedElementType: FeedElementType,
   actor: Actor,
   attachment: any,
-  body: any,
+  body: FeedItemBody,
   // capabilities: FeedElementCapabilities,
   // clientInfo: ClientInfo,
   // comments: Array<Comment>, -> capabilities.comments.page
