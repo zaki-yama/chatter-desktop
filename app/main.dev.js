@@ -62,7 +62,7 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
+    width: 480,
     height: 728,
   });
   mainWindow.webContents.on('new-window', (event, url) => {
