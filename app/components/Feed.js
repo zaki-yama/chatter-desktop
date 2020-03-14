@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Spinner as ReactLDSSpinner } from 'react-lightning-design-system';
 import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
-import FeedItem from './FeedItem';
+import FeedItem from '../containers/FeedItem';
 
 type Props = {
   feedItems: Array<FeedItemPropsType>,
