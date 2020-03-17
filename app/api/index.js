@@ -8,6 +8,7 @@ export async function fetchMyFeed(tokens: Tokens) {
   const conn = new jsforce.Connection({
     instanceUrl: tokens.instanceUrl,
     accessToken: tokens.accessToken,
+    version: '48.0',
     // you can change loginUrl to connect to sandbox or prerelease env.
     // loginUrl : 'https://test.salesforce.com'
   });
