@@ -12,18 +12,20 @@ export async function fetchMyFeed(tokens: Tokens) {
     // loginUrl : 'https://test.salesforce.com'
   });
   try {
-    const result = await conn.chatter
-      .resource('/feeds/news/me/feed-elements')
-      .promise();
+    const result = await conn.request({
+      url: '/chatter/feeds/news/me/feed-elements', 
+      headers: { 'X-Connect-Theme' : 'Salesforce1' }
+    });
     return result.elements;
   } catch (err) {
     if (err.errorCode === 'INVALID_SESSION_ID') {
       const newTokens = await refreshToken(tokens.refreshToken);
       conn.accessToken = newTokens.access_token;
       console.log('New access token', newTokens);
-      const result = await conn.chatter
-        .resource('/feeds/news/me/feed-elements')
-        .promise();
+      const result = await conn.request({
+        url: '/chatter/feeds/news/me/feed-elements', 
+        headers: { 'X-Connect-Theme' : 'Salesforce1' }
+      });
       return result.elements;
     }
     console.log('Failed to fetch my feed', err.errorCode, err);

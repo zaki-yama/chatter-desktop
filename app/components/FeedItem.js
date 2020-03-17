@@ -8,6 +8,7 @@ import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
 type Props = {
   item: FeedItemPropsType,
   instanceUrl: string,
+  accessToken: string,
 };
 
 type HeaderProps = {
@@ -172,7 +173,7 @@ export default class FeedItem extends Component<Props> {
             id={this.props.item.id}
             name={this.props.item.actor.displayName}
             actorId={this.props.item.actor.id}
-            photoUrl={this.props.item.actor.photo.standardEmailPhotoUrl}
+            photoUrl={`${this.props.item.actor.photo.smallPhotoUrl}?oauth_token=${this.props.accessToken}`}
             relativeCreatedDate={this.props.item.relativeCreatedDate}
             instanceUrl={this.props.instanceUrl}
           />
