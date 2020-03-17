@@ -37,7 +37,7 @@ type RecordSummary = {
 export type UserSummary = {
   additionalLabel: ?string,
   communityNickname: string,
-  companyName: string,
+  companyName: ?string,
   displayName: string,
   firstName: ?string,
   id: string,
