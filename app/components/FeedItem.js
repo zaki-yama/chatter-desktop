@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Button, Icon } from 'react-lightning-design-system';
 
 import { parseFeedItemBody } from '../utils/bodyParser';
 
 import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
+import type { FeedComment as FeedCommentPropsType } from '../types/FeedComment';
+
+import FeedComment from '../containers/FeedComment';
+
+const DEFAULT_COMMENT_SIZE = 1;
 
 type Props = {
   item: FeedItemPropsType,
@@ -92,7 +97,6 @@ function Content(props: ContentProps) {
   );
 }
 
-// slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle
 function Footer() {
   return (
     <footer className="slds-post__footer">
@@ -130,45 +134,52 @@ function Footer() {
   );
 }
 
-/* TODO
-function Comment(props) {
-  return (
-    <article className="slds-comment slds-media slds-hint-parent">
-      <div className="slds-media__figure">
-        <a href="javascript:void(0);" className="slds-avatar slds-avatar_circle slds-avatar_medium">
-          <img alt="Jenna Davis" src="/assets/images/avatar2.jpg" title="Jenna Davis avatar" />
-        </a>
-      </div>
-      <div className="slds-media__body">
-        <header className="slds-media slds-media_center">
-          <div className="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-            <p className="slds-truncate" title="Jenna Davis"><a href="javascript:void(0);">Jenna Davis</a></p>
-            <button className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small" aria-haspopup="true" title="More Options">
-              <svg className="slds-button__icon" aria-hidden="true">
-                <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down" />
-              </svg>
-              <span className="slds-assistive-text">More Options</span>
-            </button>
-          </div>
-        </header>
-        <div className="slds-comment__content slds-text-longform">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-        <footer>
-          <ul className="slds-list_horizontal slds-has-dividers_right slds-text-body_small">
-            <li className="slds-item">
-              <button className="slds-button_reset slds-text-color_weak" title="Like this item" aria-pressed="false">Like</button>
+type CommentProps = {
+  items: Array<FeedCommentPropsType>,
+  instanceUrl: string,
+};
+
+function Comment(props: CommentProps) {
+  const [showsAllComments, show] = useState(false);
+  if (props.items.length > DEFAULT_COMMENT_SIZE && !showsAllComments) {
+    return (
+      <div className="slds-feed__item-comments">
+        <div className="slds-p-horizontal_medium slds-p-vertical_x-small slds-grid">
+          <button className="slds-button_reset slds-text-link" onClick={() => show(true)}>More comments</button>
+          <span className="slds-text-body_small slds-col_bump-left">{DEFAULT_COMMENT_SIZE} of {props.items.length}</span>
+        </div>
+        <ul>
+          {props.items.map((feedComment, index) => (
+            index <= DEFAULT_COMMENT_SIZE - 1 &&
+            <li key={feedComment.id}>
+              <FeedComment
+                item={feedComment}
+                instanceUrl={props.instanceUrl}
+              />
             </li>
-            <li className="slds-item">16hr Ago</li>
-          </ul>
-        </footer>
+          ))}
+        </ul>
       </div>
-    </article>
+    );
+  }
+  return (
+    <div className="slds-feed__item-comments">
+      <ul>
+        {props.items.map(feedComment => (
+          <li key={feedComment.id}>
+            <FeedComment
+              item={feedComment}
+              instanceUrl={props.instanceUrl}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
-*/
 
 export default class FeedItem extends Component<Props> {
   render() {
-    console.log(this.props.item);
     return (
       <li className="slds-feed__item">
         <article className="slds-post">
@@ -183,6 +194,10 @@ export default class FeedItem extends Component<Props> {
           <Content text={parseFeedItemBody(this.props.item.body, this.props.instanceUrl)} />
           <Footer />
         </article>
+        <Comment
+          items={this.props.item.capabilities.comments.page.items}
+          instanceUrl={this.props.instanceUrl}
+        />
       </li>
     );
   }
