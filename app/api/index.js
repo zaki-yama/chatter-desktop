@@ -13,8 +13,8 @@ export async function fetchMyFeed(tokens: Tokens) {
   });
   try {
     const result = await conn.request({
-      url: '/chatter/feeds/news/me/feed-elements', 
-      headers: { 'X-Connect-Theme' : 'Salesforce1' }
+      url: '/chatter/feeds/news/me/feed-elements',
+      headers: { 'X-Connect-Theme': 'Salesforce1' },
     });
     return result.elements;
   } catch (err) {
@@ -23,8 +23,8 @@ export async function fetchMyFeed(tokens: Tokens) {
       conn.accessToken = newTokens.access_token;
       console.log('New access token', newTokens);
       const result = await conn.request({
-        url: '/chatter/feeds/news/me/feed-elements', 
-        headers: { 'X-Connect-Theme' : 'Salesforce1' }
+        url: '/chatter/feeds/news/me/feed-elements',
+        headers: { 'X-Connect-Theme': 'Salesforce1' },
       });
       return result.elements;
     }
