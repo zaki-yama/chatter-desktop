@@ -28,6 +28,7 @@ function Header(props: HeaderProps) {
           className="slds-avatar slds-avatar_circle slds-avatar_large"
           href={`${props.instanceUrl}/${props.actorId}`}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <img
             alt={props.name}
@@ -43,6 +44,7 @@ function Header(props: HeaderProps) {
               href={`${props.instanceUrl}/${props.actorId}`}
               target="_blank"
               title={props.name}
+              rel="noopener noreferrer"
             >
               {props.name}
             </a>
@@ -67,6 +69,7 @@ function Header(props: HeaderProps) {
             href={`${props.instanceUrl}/${props.id}`}
             target="_blank"
             title="Click for single-item view of this post"
+            rel="noopener noreferrer"
           >
             {props.relativeCreatedDate}
           </a>
