@@ -1,6 +1,6 @@
 // @flow
 import type { MessageSegment } from '../types/MessageSegment';
-import type { FeedItemBody } from '../types/FeedItem';
+import type { FeedItemBody } from '../types/Resource';
 
 // eslint-disable-next-line import/prefer-default-export
 export function parseFeedItemBody(body: FeedItemBody, instanceUrl: string): string {
