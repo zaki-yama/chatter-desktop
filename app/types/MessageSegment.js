@@ -4,48 +4,35 @@
  * ref. https://developer.salesforce.com/docs/atlas.en-us.212.0.chatterapi.meta/chatterapi/connect_responses_feed_item_body.htm
  */
 
+import type { UserSummary, Group } from './Actor';
+
+type UserDetail = UserSummary;
+
 type Text = {
-  type: 'Text',
+  type: string, // 'Text',
   text: string,
 };
 
 type Mention = {
-  type: 'Mention',
   accessible: boolean,
   name: string,
   text: string,
+  type: string, // 'Mention',
   record: Group | UserDetail | UserSummary,
   user: UserSummary,
 };
 
-type Group = {
-  id: string,
-  type: 'CollaborationGroup',
-  myRole: 'GroupOwner'
-    | 'GroupManager'
-    | 'NotAMember'
-    | 'NotAMemberPrivateRequested'
-    | 'StandardMember',
-  name: string,
-};
-
-type UserSummary = {
-  id: string,
-  type: 'User',
-  name: string,
-};
-
-type UserDetail = UserSummary;
-
 type Link = {
-  type: 'Link',
+  type: string, // 'Link',
   text: string,
-  reference: Reference,
   url: string,
 };
 
-type Reference = {
-  id: string,
+type HashTag = {
+  tag: string,
+  text: string,
+  topicUrl: string,
+  type: string, // 'HashTag',
   url: string,
 };
 
@@ -61,7 +48,7 @@ type MarkupBegin = {
     | 'Strikethrough'
     | 'Underline'
     | 'UnorderedList',
-  text: '',
+  text: string,
 };
 
 type MarkupEnd = {
@@ -76,7 +63,7 @@ type MarkupEnd = {
     | 'Strikethrough'
     | 'Underline'
     | 'UnorderedList',
-  text: '',
+  text: string,
 };
 
-export type MessageSegment = Text | Mention | Link | MarkupBegin | MarkupEnd;
+export type MessageSegment = Text | Mention | Link | HashTag | MarkupBegin | MarkupEnd;

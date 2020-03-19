@@ -1,79 +1,36 @@
 // @flow
-import type { MessageSegment } from './MessageSegment';
+import type { Reference, FeedItemBody } from './Resource';
+import type { Actor } from './Actor';
 
 type FeedElementType = 'Bundle' | 'FeedItem' | 'Recommendation';
 
-type EntityLabel = {
-  label: string,
-  labelPlural: string,
-};
-
-type RecordSummary = {
-  entityLabel: EntityLabel,
-  id: string,
-  // motif:
-  // name:
-};
-
-type Photo = {
-  smallPhotoUrl: string,
-};
-
-type UserSummary = {
-  id: string,
-  companyName: string,
-  displayName: string,
-  // motif:
-  photo: Photo,
-  url: string, // URL to the user's Chatter profile
-  userType: 'ChatterGuest'
-    | 'ChatterOnly'
-    | 'Guest'
-    | 'Internal'
-    | 'Portal'
-    | 'System'
-    | 'Undefined',
-};
-
-type Actor = RecordSummary | UserSummary;
-
-export type FeedItemBody = {
-  isRichText: boolean,
-  messageSegments: Array<MessageSegment>,
-  text: string,
+type ClientInfo = {
+  applicationName: string,
+  applicationUrl: string,
 };
 
 export type FeedItem = {
-  id: string,
-  feedElementType: FeedElementType,
   actor: Actor,
   attachment: any,
   body: FeedItemBody,
-  // capabilities: FeedElementCapabilities,
-  // clientInfo: ClientInfo,
-  // comments: Array<Comment>, -> capabilities.comments.page
+  capabilities: any,
+  clientInfo: ?ClientInfo,
   createdDate: string,
   relativeCreatedDate: string,
-  // currentUserLike:
-  event: boolean,
+  event: ?boolean,
+  feedElementType: FeedElementType,
+  hasVerifiedComment: boolean,
   header: any,
-  isLikedByCurrentUser: boolean,
-  // likes: LikePage, -> capabilities.chatterLikes.page
-  // likeMessage:
-  modifiedDate: string,
+  id: string,
+  isDeleteRestricted: boolean,
+  isSharable: boolean,
+  modifiedDate: ?string,
+  originalFeedItem: ?Reference,
+  originalFeedItemActor: any,
+  parent: any,
+  photoUrl: string,
+  preamble: any,
+  relativeCreatedDate: string,
   url: string,
-  visibility: string,
+  visibility: ?string,
 };
-
-// type GenericFeedElement = {
-// body:
-// capabilities:
-// createdDate:
-// feedElementType: FeedElementType
-// header:
-// id:
-// modifiedDate:
-// parent:
-// relativeCreatedDate:
-// url:
-// }
