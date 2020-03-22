@@ -13,9 +13,9 @@ Yet Another Chatter Desktop
 
 Go to https://github.com/zaki-yama/chatter-desktop/releases and download `.dmg` file of the latest version.
 
-**Note: For Mac users only. For users of other OS, please package by yourself by reading [How to Develop locally](#how-to-develop-locally) and [Packageing](#packaging) section.**
+**Note: For Mac users only. For users of other OS, please package by yourself by reading [Development](#Development) and [Packageing](#Packaging) section.**
 
-## How to Develop Locally
+## Development
 
 * **Note: requires a node version >= 7 and an npm version >= 4.**
 
