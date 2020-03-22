@@ -1,7 +1,7 @@
 {
   "name": "chatter-desktop",
   "productName": "Chatter Desktop",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Chatter Desktop made with Electron",
   "main": "./main.prod.js",
   "author": {
