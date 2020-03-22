@@ -9,7 +9,13 @@ Yet Another Chatter Desktop
 
 ![demo](./resources/screenshot.gif)
 
-## Install
+## How to Install
+
+Go to https://github.com/zaki-yama/chatter-desktop/releases and download `.dmg` file of the latest version.
+
+**Note: For Mac users only. For users of other OS, please package by yourself by reading [How to Develop locally](#how-to-develop-locally) and [Packageing](#packaging) section.**
+
+## How to Develop Locally
 
 * **Note: requires a node version >= 7 and an npm version >= 4.**
 
