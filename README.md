@@ -7,7 +7,7 @@ Yet Another Chatter Desktop
 
 ## Screenshot
 
-![demo](https://user-images.githubusercontent.com/1001444/37089329-864c3cb0-2243-11e8-94c7-2c25107ada72.gif)
+![demo](./resources/screenshot.gif)
 
 ## Install
 
