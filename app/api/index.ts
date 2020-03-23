@@ -14,6 +14,7 @@ export async function fetchMyFeed(tokens: any) {
   });
   try {
     const result = await conn.request({
+      method: 'GET',
       url: '/chatter/feeds/news/me/feed-elements',
       headers: { 'X-Connect-Theme': 'Salesforce1' },
     });
