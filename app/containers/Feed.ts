@@ -6,7 +6,7 @@ import { fetchMyFeed } from '../api';
 const mapStateToProps = state => ({
   feedItems: state.feedItems,
   instanceUrl: state.tokens.instanceUrl,
-  loading: state.loading,
+  loading: state.loading
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     const feedItems = await fetchMyFeed(ownProps.tokens);
     dispatch({ type: 'FETCH_FEED_ITEMS', payload: feedItems });
     dispatch({ type: 'LOADING_END' });
-  },
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);

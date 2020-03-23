@@ -4,7 +4,10 @@
 // eslint-disable-next-line import/prefer-default-export
 export function parseFeedItemBody(body, instanceUrl: string): string {
   // NOTE: Even isRichText = false, the text might contain mentions
-  return body.messageSegments.reduce((prev, current) => prev + parseMessageSegment(current, instanceUrl), '');
+  return body.messageSegments.reduce(
+    (prev, current) => prev + parseMessageSegment(current, instanceUrl),
+    ''
+  );
 }
 
 function parseMessageSegment(messageSegment, instanceUrl: string): string {

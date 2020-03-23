@@ -1,10 +1,10 @@
 // @ts-nocheck
-type Tokens = {} // TODO
+type Tokens = {}; // TODO
 
-const convert = (rawTokens: Token)=> ({
+const convert = (rawTokens: Token) => ({
   accessToken: rawTokens.access_token,
   refreshToken: rawTokens.refresh_token,
-  instanceUrl: rawTokens.instance_url,
+  instanceUrl: rawTokens.instance_url
 });
 
 export default function tokensReducer(state: Tokens = null, action: any) {

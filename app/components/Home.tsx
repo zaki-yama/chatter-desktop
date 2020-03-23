@@ -4,9 +4,9 @@ import { Button, Icon } from 'react-lightning-design-system';
 import Feed from '../containers/Feed';
 
 type Props = {
-  loading: boolean,
-  tokens: Object,
-  onClickLogin: () => void,
+  loading: boolean;
+  tokens: Record<string, any>;
+  onClickLogin: () => void;
 };
 
 export default class Home extends Component<Props> {
@@ -21,7 +21,7 @@ export default class Home extends Component<Props> {
               <div className="slds-col">
                 <div className="slds-text-heading_large slds-text-align_center">
                   Chatter Desktop
-              </div>
+                </div>
               </div>
               <div className="slds-col slds-size--1-of-1 slds-align_absolute-center slds-m-vertical_large">
                 <Icon category="standard" icon="feed" size="large" />
@@ -29,7 +29,9 @@ export default class Home extends Component<Props> {
               <div className="slds-col slds-size--1-of-1 slds-align_absolute-center">
                 <Button
                   type="neutral"
-                  onClick={this.props.loading ? undefined : this.props.onClickLogin}
+                  onClick={
+                    this.props.loading ? undefined : this.props.onClickLogin
+                  }
                   disabled={this.props.loading}
                 >
                   Login

@@ -3,7 +3,7 @@ import type { MessageSegment } from './MessageSegment';
 
 export type Reference = {
   id: string,
-  url: string,
+  url: string
 };
 
 export type Photo = {
@@ -13,11 +13,11 @@ export type Photo = {
   photoVersionId: ?string,
   smallPhotoUrl: string,
   standardEmailPhotoUrl: string,
-  url: string,
+  url: string
 };
 
 export type FeedItemBody = {
   isRichText: boolean,
-  messageSegments: Array<MessageSegment>,
-  text: string,
+  messageSegments: MessageSegment[],
+  text: string
 };

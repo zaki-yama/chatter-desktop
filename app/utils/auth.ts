@@ -27,10 +27,12 @@ export default async function startAuth() {
   // code verifier value is generated randomly and base64url-encoded
   const verifier = base64url.encode(crypto.randomBytes(32));
   // code challenge value is sha256-hashed value of the verifier, base64url-encoded.
-  const challenge = base64url.encode(crypto
-    .createHash('sha256')
-    .update(verifier)
-    .digest());
+  const challenge = base64url.encode(
+    crypto
+      .createHash('sha256')
+      .update(verifier)
+      .digest()
+  );
   // attach code challenge when requesting to authorization server
   const authzUrl =
     authzEndpointUrl +
@@ -39,7 +41,7 @@ export default async function startAuth() {
       response_type: 'code',
       client_id: clientId,
       redirect_uri: redirectUri,
-      code_challenge: challenge,
+      code_challenge: challenge
     });
   // open authorization url in OS standard browser
   shell.openExternal(authzUrl);
@@ -53,15 +55,15 @@ export default async function startAuth() {
     method: 'post',
     url: tokenEndpointUrl,
     headers: {
-      'content-type': 'application/x-www-form-urlencoded',
+      'content-type': 'application/x-www-form-urlencoded'
     },
     data: querystring.stringify({
       grant_type: 'authorization_code',
       code,
       client_id: clientId,
       redirect_uri: redirectUri,
-      code_verifier: verifier,
-    }),
+      code_verifier: verifier
+    })
   });
   return ret.data;
 }
@@ -71,13 +73,13 @@ export async function refreshToken(refreshToken) {
     method: 'post',
     url: tokenEndpointUrl,
     headers: {
-      'content-type': 'application/x-www-form-urlencoded',
+      'content-type': 'application/x-www-form-urlencoded'
     },
     data: querystring.stringify({
       grant_type: 'refresh_token',
       refresh_token: refreshToken,
-      client_id: clientId,
-    }),
+      client_id: clientId
+    })
   });
   return ret.data;
 }

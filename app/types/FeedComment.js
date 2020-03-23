@@ -21,5 +21,5 @@ export type FeedComment = {
   threadParentId: ?string,
   type: string,
   url: string,
-  user: UserSummary,
+  user: UserSummary
 };

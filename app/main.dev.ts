@@ -122,9 +122,7 @@ app.on('activate', () => {
  * Start express HTTP server and listen on the specified redirect URL
  */
 export async function waitCallback(redirectUri: string, options = {}) {
-  const {
-    protocol, hostname, port, pathname,
-  } = url.parse(redirectUri);
+  const { protocol, hostname, port, pathname } = url.parse(redirectUri);
   if (protocol !== 'http:' || hostname !== 'localhost') {
     throw new Error('redirectUri should be an http://localhost url');
   }

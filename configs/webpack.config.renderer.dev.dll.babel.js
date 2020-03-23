@@ -30,13 +30,9 @@ export default merge.smart(baseConfig, {
   module: require('./webpack.config.renderer.dev.babel').default.module,
 
   entry: {
-    renderer: (
-      Object
-        .keys(dependencies || {})
-        .filter(dependency => {
-          return dependency !== '@salesforce-ux/design-system';
-        })
-    )
+    renderer: Object.keys(dependencies || {}).filter(dependency => {
+      return dependency !== '@salesforce-ux/design-system';
+    })
   },
   output: {
     library: 'renderer',

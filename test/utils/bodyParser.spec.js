@@ -9,20 +9,20 @@ describe('parseFeedItemBody', () => {
           htmlTag: 'p',
           markupType: 'Paragraph',
           text: '',
-          type: 'MarkupBegin',
+          type: 'MarkupBegin'
         },
         {
           text: 'Hello',
-          type: 'Text',
+          type: 'Text'
         },
         {
           htmlTag: 'p',
           markUpType: 'Paragraph',
           text: '',
-          type: 'MarkupEnd',
-        },
+          type: 'MarkupEnd'
+        }
       ],
-      text: 'Hello',
+      text: 'Hello'
     };
 
     const expected = '<p>Hello</p>';
@@ -33,7 +33,7 @@ describe('parseFeedItemBody', () => {
   it('should just return text when isRichText = false', () => {
     const body = {
       isRichText: false,
-      text: 'hello',
+      text: 'hello'
     };
 
     const expected = 'hello';

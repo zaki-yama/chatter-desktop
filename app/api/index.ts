@@ -8,7 +8,7 @@ export async function fetchMyFeed(tokens: any) {
   const conn = new jsforce.Connection({
     instanceUrl: tokens.instanceUrl,
     accessToken: tokens.accessToken,
-    version: '48.0',
+    version: '48.0'
     // you can change loginUrl to connect to sandbox or prerelease env.
     // loginUrl : 'https://test.salesforce.com'
   });
@@ -16,7 +16,7 @@ export async function fetchMyFeed(tokens: any) {
     const result = await conn.request({
       method: 'GET',
       url: '/chatter/feeds/news/me/feed-elements',
-      headers: { 'X-Connect-Theme': 'Salesforce1' },
+      headers: { 'X-Connect-Theme': 'Salesforce1' }
     });
     return result.elements;
   } catch (err) {
@@ -26,7 +26,7 @@ export async function fetchMyFeed(tokens: any) {
       console.log('New access token', newTokens);
       const result = await conn.request({
         url: '/chatter/feeds/news/me/feed-elements',
-        headers: { 'X-Connect-Theme': 'Salesforce1' },
+        headers: { 'X-Connect-Theme': 'Salesforce1' }
       });
       return result.elements;
     }

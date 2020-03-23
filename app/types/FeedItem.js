@@ -6,7 +6,7 @@ type FeedElementType = 'Bundle' | 'FeedItem' | 'Recommendation';
 
 type ClientInfo = {
   applicationName: string,
-  applicationUrl: string,
+  applicationUrl: string
 };
 
 export type FeedItem = {
@@ -32,5 +32,5 @@ export type FeedItem = {
   preamble: any,
   relativeCreatedDate: string,
   url: string,
-  visibility: ?string,
+  visibility: ?string
 };

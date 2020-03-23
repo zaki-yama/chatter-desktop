@@ -4,14 +4,12 @@ import { connect } from 'react-redux';
 import Home from '../components/Home';
 import startAuth from '../utils/auth';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loading: state.loading,
   tokens: state.tokens
 });
 
-const mapDispatchToProps = (
-  dispatch
-) => ({
+const mapDispatchToProps = dispatch => ({
   onClickLogin: async () => {
     dispatch({ type: 'LOGIN_START' });
     try {

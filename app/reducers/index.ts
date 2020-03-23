@@ -11,6 +11,6 @@ export default function createRootReducer(history: History) {
     router: connectRouter(history),
     loading,
     tokens,
-    feedItems,
+    feedItems
   });
 }

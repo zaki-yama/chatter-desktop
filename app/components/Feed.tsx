@@ -5,11 +5,11 @@ import { Spinner as ReactLDSSpinner } from 'react-lightning-design-system';
 import FeedItem from '../containers/FeedItem';
 
 type Props = {
-  feedItems: any,
-  instanceUrl: string,
-  loading: boolean,
-  onMount: () => void,
-  tick: () => void,
+  feedItems: any;
+  instanceUrl: string;
+  loading: boolean;
+  onMount: () => void;
+  tick: () => void;
 };
 
 function Spinner() {
@@ -27,7 +27,7 @@ export default class Feed extends Component<Props> {
 
   static defaultProps = {
     loading: false,
-    feedItems: [],
+    feedItems: []
   };
 
   componentDidMount() {

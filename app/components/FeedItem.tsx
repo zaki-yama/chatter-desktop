@@ -1,7 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Button, Icon } from 'react-lightning-design-system';
 
-
 import { parseFeedItemBody } from '../utils/bodyParser';
 
 import FeedComment from '../containers/FeedComment';
@@ -9,18 +8,18 @@ import FeedComment from '../containers/FeedComment';
 const DEFAULT_COMMENT_SIZE = 1;
 
 type Props = {
-  item: any,
-  instanceUrl: string,
-  accessToken: string,
+  item: any;
+  instanceUrl: string;
+  accessToken: string;
 };
 
 type HeaderProps = {
-  id: string,
-  instanceUrl: string,
-  photoUrl: string,
-  name: string,
-  actorId: string,
-  relativeCreatedDate: string,
+  id: string;
+  instanceUrl: string;
+  photoUrl: string;
+  name: string;
+  actorId: string;
+  relativeCreatedDate: string;
 };
 
 function Header(props: HeaderProps) {
@@ -83,7 +82,7 @@ function Header(props: HeaderProps) {
 }
 
 type ContentProps = {
-  text?: string,
+  text?: string;
 };
 
 function Content(props: ContentProps) {
@@ -105,7 +104,12 @@ function Footer() {
             className="slds-button_reset slds-post__footer-action"
             aria-pressed="false"
           >
-            <Icon category="utility" icon="like" size="x-small" className="slds-icon-text-default slds-align-middle" />
+            <Icon
+              category="utility"
+              icon="like"
+              size="x-small"
+              className="slds-icon-text-default slds-align-middle"
+            />
             Like
           </Button>
         </li>
@@ -114,7 +118,12 @@ function Footer() {
             title="Comment on this item"
             className="slds-button_reset slds-post__footer-action"
           >
-            <Icon category="utility" icon="share_post" size="x-small" className="slds-icon-text-default slds-align-middle" />
+            <Icon
+              category="utility"
+              icon="share_post"
+              size="x-small"
+              className="slds-icon-text-default slds-align-middle"
+            />
             Comment
           </Button>
         </li>
@@ -123,7 +132,12 @@ function Footer() {
             title="Share this item"
             className="slds-button_reset slds-post__footer-action"
           >
-            <Icon category="utility" icon="share" size="x-small" className="slds-icon-text-default slds-align-middle" />
+            <Icon
+              category="utility"
+              icon="share"
+              size="x-small"
+              className="slds-icon-text-default slds-align-middle"
+            />
             Share
           </Button>
         </li>
@@ -133,8 +147,8 @@ function Footer() {
 }
 
 type CommentProps = {
-  items: any,
-  instanceUrl: string,
+  items: any;
+  instanceUrl: string;
 };
 
 function Comment(props: CommentProps) {
@@ -143,19 +157,28 @@ function Comment(props: CommentProps) {
     return (
       <div className="slds-feed__item-comments">
         <div className="slds-p-horizontal_medium slds-p-vertical_x-small slds-grid">
-          <button className="slds-button_reset slds-text-link" onClick={() => show(true)}>More comments</button>
-          <span className="slds-text-body_small slds-col_bump-left">{DEFAULT_COMMENT_SIZE} of {props.items.length}</span>
+          <button
+            className="slds-button_reset slds-text-link"
+            onClick={() => show(true)}
+          >
+            More comments
+          </button>
+          <span className="slds-text-body_small slds-col_bump-left">
+            {DEFAULT_COMMENT_SIZE} of {props.items.length}
+          </span>
         </div>
         <ul>
-          {props.items.map((feedComment, index) => (
-            index <= DEFAULT_COMMENT_SIZE - 1 &&
-            <li key={feedComment.id}>
-              <FeedComment
-                item={feedComment}
-                instanceUrl={props.instanceUrl}
-              />
-            </li>
-          ))}
+          {props.items.map(
+            (feedComment, index) =>
+              index <= DEFAULT_COMMENT_SIZE - 1 && (
+                <li key={feedComment.id}>
+                  <FeedComment
+                    item={feedComment}
+                    instanceUrl={props.instanceUrl}
+                  />
+                </li>
+              )
+          )}
         </ul>
       </div>
     );
@@ -165,10 +188,7 @@ function Comment(props: CommentProps) {
       <ul>
         {props.items.map(feedComment => (
           <li key={feedComment.id}>
-            <FeedComment
-              item={feedComment}
-              instanceUrl={props.instanceUrl}
-            />
+            <FeedComment item={feedComment} instanceUrl={props.instanceUrl} />
           </li>
         ))}
       </ul>
@@ -189,7 +209,12 @@ export default class FeedItem extends Component<Props> {
             relativeCreatedDate={this.props.item.relativeCreatedDate}
             instanceUrl={this.props.instanceUrl}
           />
-          <Content text={parseFeedItemBody(this.props.item.body, this.props.instanceUrl)} />
+          <Content
+            text={parseFeedItemBody(
+              this.props.item.body,
+              this.props.instanceUrl
+            )}
+          />
           <Footer />
         </article>
         <Comment

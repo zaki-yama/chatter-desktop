@@ -10,7 +10,7 @@ type UserDetail = UserSummary;
 
 type Text = {
   type: string, // 'Text',
-  text: string,
+  text: string
 };
 
 type Mention = {
@@ -19,13 +19,13 @@ type Mention = {
   text: string,
   type: string, // 'Mention',
   record: Group | UserDetail | UserSummary,
-  user: UserSummary,
+  user: UserSummary
 };
 
 type Link = {
   type: string, // 'Link',
   text: string,
-  url: string,
+  url: string
 };
 
 type HashTag = {
@@ -33,13 +33,14 @@ type HashTag = {
   text: string,
   topicUrl: string,
   type: string, // 'HashTag',
-  url: string,
+  url: string
 };
 
 type MarkupBegin = {
   type: 'MarkupBegin',
   htmlTag: string,
-  markupType: 'Bold'
+  markupType:
+    | 'Bold'
     | 'Code'
     | 'Italic'
     | 'ListItem'
@@ -48,13 +49,14 @@ type MarkupBegin = {
     | 'Strikethrough'
     | 'Underline'
     | 'UnorderedList',
-  text: string,
+  text: string
 };
 
 type MarkupEnd = {
   type: 'MarkupEnd',
   htmlTag: string,
-  markupType: 'Bold'
+  markupType:
+    | 'Bold'
     | 'Code'
     | 'Italic'
     | 'ListItem'
@@ -63,7 +65,13 @@ type MarkupEnd = {
     | 'Strikethrough'
     | 'Underline'
     | 'UnorderedList',
-  text: string,
+  text: string
 };
 
-export type MessageSegment = Text | Mention | Link | HashTag | MarkupBegin | MarkupEnd;
+export type MessageSegment =
+  | Text
+  | Mention
+  | Link
+  | HashTag
+  | MarkupBegin
+  | MarkupEnd;
