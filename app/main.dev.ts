@@ -127,6 +127,7 @@ export async function waitCallback(redirectUri: string, options = {}) {
     throw new Error('redirectUri should be an http://localhost url');
   }
   return new Promise((resolve, reject) => {
+    // eslint-disable-next-line no-shadow
     const app = express();
     app.get(pathname, async (req, res) => {
       resolve(req.query);

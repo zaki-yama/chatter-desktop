@@ -7,6 +7,7 @@ const convert = (rawTokens: Token) => ({
   instanceUrl: rawTokens.instance_url
 });
 
+// eslint-disable-next-line default-param-last
 export default function tokensReducer(state: Tokens = null, action: any) {
   switch (action.type) {
     case 'SET_TOKENS':

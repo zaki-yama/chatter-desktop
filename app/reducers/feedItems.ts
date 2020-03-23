@@ -1,9 +1,4 @@
-import type { FeedItem } from '../types/FeedItem';
-
-export default function feedItemsReducer(
-  state: FeedItem[] = [],
-  action: any
-) {
+export default function feedItemsReducer(state: any, action: any) {
   switch (action.type) {
     case 'FETCH_FEED_ITEMS':
       return action.payload;

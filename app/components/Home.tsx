@@ -9,6 +9,7 @@ type Props = {
   onClickLogin: () => void;
 };
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class Home extends Component<Props> {
   render() {
     return (

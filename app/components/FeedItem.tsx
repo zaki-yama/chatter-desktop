@@ -196,6 +196,7 @@ function Comment(props: CommentProps) {
   );
 }
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class FeedItem extends Component<Props> {
   render() {
     return (

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import jsforce from 'jsforce';
-import { refreshToken } from '../utils/auth';
+import { fetchNewAccessToken } from '../utils/auth';
 // import type { Tokens } from '../types';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -21,7 +21,7 @@ export async function fetchMyFeed(tokens: any) {
     return result.elements;
   } catch (err) {
     if (err.errorCode === 'INVALID_SESSION_ID') {
-      const newTokens = await refreshToken(tokens.refreshToken);
+      const newTokens = await fetchNewAccessToken(tokens.refreshToken);
       conn.accessToken = newTokens.access_token;
       console.log('New access token', newTokens);
       const result = await conn.request({

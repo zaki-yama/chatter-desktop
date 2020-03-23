@@ -68,7 +68,7 @@ export default async function startAuth() {
   return ret.data;
 }
 
-export async function refreshToken(refreshToken) {
+export async function fetchNewAccessToken(refreshToken) {
   const ret = await axios({
     method: 'post',
     url: tokenEndpointUrl,

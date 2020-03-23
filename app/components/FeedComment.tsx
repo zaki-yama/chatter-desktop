@@ -99,6 +99,7 @@ function Footer(props: FooterProps) {
   );
 }
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class FeedComment extends Component<Props> {
   render() {
     return (
