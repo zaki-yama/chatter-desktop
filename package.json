@@ -37,9 +37,7 @@
     "test-watch": "yarn test --watch"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "cross-env NODE_ENV=development eslint --cache"
-    ],
+    "*.{js,jsx,ts,tsx}": ["cross-env NODE_ENV=development eslint --cache"],
     "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
       "prettier --ignore-path .eslintignore --parser json --write"
     ],
@@ -77,17 +75,10 @@
       ]
     },
     "win": {
-      "target": [
-        "nsis",
-        "msi"
-      ]
+      "target": ["nsis", "msi"]
     },
     "linux": {
-      "target": [
-        "deb",
-        "rpm",
-        "AppImage"
-      ],
+      "target": ["deb", "rpm", "AppImage"],
       "category": "Development"
     },
     "directories": {
@@ -145,20 +136,9 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "ts",
-      "tsx",
-      "json"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "app/node_modules"
-    ],
-    "setupFiles": [
-      "./internals/scripts/CheckBuildsExist.js"
-    ]
+    "moduleFileExtensions": ["js", "jsx", "ts", "tsx", "json"],
+    "moduleDirectories": ["node_modules", "app/node_modules"],
+    "setupFiles": ["./internals/scripts/CheckBuildsExist.js"]
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -264,7 +244,7 @@
     "testcafe-browser-provider-electron": "^0.0.14",
     "testcafe-react-selectors": "^4.0.0",
     "typed-css-modules-webpack-plugin": "^0.1.2",
-    "typescript": "^3.7.5",
+    "typescript": "3.7.5",
     "url-loader": "^3.0.0",
     "webpack": "^4.41.5",
     "webpack-bundle-analyzer": "^3.6.0",
@@ -307,18 +287,11 @@
   "collective": {
     "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
-  "browserslist": [
-    "extends browserslist-config-erb"
-  ],
+  "browserslist": ["extends browserslist-config-erb"],
   "prettier": {
     "overrides": [
       {
-        "files": [
-          ".prettierrc",
-          ".babelrc",
-          ".eslintrc",
-          ".stylelintrc"
-        ],
+        "files": [".prettierrc", ".babelrc", ".eslintrc", ".stylelintrc"],
         "options": {
           "parser": "json"
         }
@@ -327,15 +300,10 @@
     "singleQuote": true
   },
   "stylelint": {
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-prettier"
-    ]
+    "extends": ["stylelint-config-standard", "stylelint-config-prettier"]
   },
   "renovate": {
-    "extends": [
-      "bliss"
-    ]
+    "extends": ["bliss"]
   },
   "husky": {
     "hooks": {
