@@ -1605,6 +1605,11 @@
   dependencies:
     jest-diff "^24.3.0"
 
+"@types/jsforce@^1.9.15":
+  version "1.9.15"
+  resolved "https://registry.yarnpkg.com/@types/jsforce/-/jsforce-1.9.15.tgz#69a2d5e8214628c67d5b53b66773fad39d62e102"
+  integrity sha512-Zvi3vn9QrkNdoVjz2U3pL2K5Up9YAUhku0Zs9cbnIoN2yMCJoYll11MbATlqqBHp96suH4ZbnqC7TDyBidkyCw==
+
 "@types/json-schema@^7.0.3":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.4.tgz#38fd73ddfd9b55abb1e1b2ed578cb55bd7b7d339"
