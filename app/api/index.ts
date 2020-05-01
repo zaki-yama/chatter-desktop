@@ -1,9 +1,20 @@
-// @ts-nocheck
-import jsforce from 'jsforce';
+import jsforce, { Connection } from 'jsforce';
 import { fetchNewAccessToken } from '../utils/auth';
 // import type { Tokens } from '../types';
 
-// eslint-disable-next-line import/prefer-default-export
+type FetchFeedElementsResult = {
+  elements: object[];
+};
+
+async function request(conn: Connection): Promise<object[]> {
+  const result = (await conn.request({
+    method: 'GET',
+    url: '/chatter/feeds/news/me/feed-elements',
+    headers: { 'X-Connect-Theme': 'Salesforce1' }
+  })) as FetchFeedElementsResult;
+  return result.elements;
+}
+
 export async function fetchMyFeed(tokens: any) {
   const conn = new jsforce.Connection({
     instanceUrl: tokens.instanceUrl,
@@ -13,22 +24,13 @@ export async function fetchMyFeed(tokens: any) {
     // loginUrl : 'https://test.salesforce.com'
   });
   try {
-    const result = await conn.request({
-      method: 'GET',
-      url: '/chatter/feeds/news/me/feed-elements',
-      headers: { 'X-Connect-Theme': 'Salesforce1' }
-    });
-    return result.elements;
+    return request(conn);
   } catch (err) {
     if (err.errorCode === 'INVALID_SESSION_ID') {
       const newTokens = await fetchNewAccessToken(tokens.refreshToken);
       conn.accessToken = newTokens.access_token;
       console.log('New access token', newTokens);
-      const result = await conn.request({
-        url: '/chatter/feeds/news/me/feed-elements',
-        headers: { 'X-Connect-Theme': 'Salesforce1' }
-      });
-      return result.elements;
+      return request(conn);
     }
     console.log('Failed to fetch my feed', err.errorCode, err);
     return [];
