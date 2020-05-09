@@ -1,7 +1,6 @@
 import { remote, shell } from 'electron';
 import crypto from 'crypto';
 import querystring from 'querystring';
-import base64url from 'base64-url';
 import axios from 'axios';
 import { Tokens, RawTokens } from '../types';
 
@@ -26,14 +25,13 @@ const redirectUri = 'http://localhost:33201/oauth2/callback';
  */
 export default async function startAuth() {
   // code verifier value is generated randomly and base64url-encoded
-  const verifier = base64url.encode(crypto.randomBytes(32));
+  const verifier = crypto.randomBytes(32).toString('base64');
   // code challenge value is sha256-hashed value of the verifier, base64url-encoded.
-  const challenge = base64url.encode(
-    crypto
-      .createHash('sha256')
-      .update(verifier)
-      .digest()
-  );
+  const challenge = crypto
+    .createHash('sha256')
+    .update(verifier)
+    .digest()
+    .toString('base64');
   // attach code challenge when requesting to authorization server
   const authzUrl =
     authzEndpointUrl +
