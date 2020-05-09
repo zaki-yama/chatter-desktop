@@ -9,3 +9,5 @@ export type Tokens = {
   refreshToken: string;
   instanceUrl: string;
 };
+
+export * from './FeedItem';
