@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 import { parseFeedItemBody } from '../utils/bodyParser';
+import { FeedComment as FeedCommentType } from '../types';
 
 type Props = {
-  item: any;
+  item: FeedCommentType;
   instanceUrl: string;
   accessToken: string;
 };
@@ -71,7 +72,7 @@ function Content(props: ContentProps) {
   return (
     <div
       className="slds-post__content slds-text-longform"
-      dangerouslySetInnerHTML={{ __html: props.text }}
+      dangerouslySetInnerHTML={{ __html: props.text || '' }}
     />
   );
 }

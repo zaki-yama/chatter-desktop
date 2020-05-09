@@ -11,3 +11,4 @@ export type Tokens = {
 };
 
 export * from './FeedItem';
+export * from './FeedComment';
