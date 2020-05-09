@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import querystring from 'querystring';
 import base64url from 'base64-url';
 import axios from 'axios';
+import { Tokens, RawTokens } from '../types';
 
 const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 const { focusWin, waitCallback } = remote.require(`./main.${env}`);
@@ -68,7 +69,7 @@ export default async function startAuth() {
   return ret.data;
 }
 
-export async function fetchNewAccessToken(refreshToken) {
+export async function fetchNewAccessToken(refreshToken: string) {
   const ret = await axios({
     method: 'post',
     url: tokenEndpointUrl,
@@ -81,5 +82,13 @@ export async function fetchNewAccessToken(refreshToken) {
       client_id: clientId
     })
   });
-  return ret.data;
+  return normalizeTokens(ret.data);
+}
+
+function normalizeTokens(rawTokens: RawTokens): Tokens {
+  return {
+    accessToken: rawTokens.access_token,
+    refreshToken: rawTokens.refresh_token,
+    instanceUrl: rawTokens.instance_url
+  };
 }

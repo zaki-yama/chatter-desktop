@@ -28,7 +28,7 @@ export async function fetchMyFeed(tokens: any) {
   } catch (err) {
     if (err.errorCode === 'INVALID_SESSION_ID') {
       const newTokens = await fetchNewAccessToken(tokens.refreshToken);
-      conn.accessToken = newTokens.access_token;
+      conn.accessToken = newTokens.accessToken;
       console.log('New access token', newTokens);
       return request(conn);
     }
