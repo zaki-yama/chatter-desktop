@@ -8,30 +8,30 @@ import { UserSummary, Group } from './Actor';
 type UserDetail = UserSummary;
 
 type Text = {
-  type: string; // 'Text',
+  type: 'Text';
   text: string;
 };
 
 type Mention = {
+  type: 'Mention';
   accessible: boolean;
   name: string;
   text: string;
-  type: string; // 'Mention',
   record: Group | UserDetail | UserSummary;
   user: UserSummary;
 };
 
 type Link = {
-  type: string; // 'Link',
+  type: 'Link';
   text: string;
   url: string;
 };
 
 type HashTag = {
+  type: 'HashTag';
   tag: string;
   text: string;
   topicUrl: string;
-  type: string; // 'HashTag',
   url: string;
 };
 

@@ -1,8 +1,10 @@
-// import type { MessageSegment } from '../types/MessageSegment';
-// import type { FeedItemBody } from '../types/Resource';
+import { MessageSegment } from '../types/MessageSegment';
+import { FeedItemBody } from '../types/Resource';
 
-// eslint-disable-next-line import/prefer-default-export
-export function parseFeedItemBody(body, instanceUrl: string): string {
+export function parseFeedItemBody(
+  body: FeedItemBody,
+  instanceUrl: string
+): string {
   // NOTE: Even isRichText = false, the text might contain mentions
   return body.messageSegments.reduce(
     (prev, current) => prev + parseMessageSegment(current, instanceUrl),
@@ -10,7 +12,10 @@ export function parseFeedItemBody(body, instanceUrl: string): string {
   );
 }
 
-function parseMessageSegment(messageSegment, instanceUrl: string): string {
+function parseMessageSegment(
+  messageSegment: MessageSegment,
+  instanceUrl: string
+): string {
   switch (messageSegment.type) {
     case 'Text':
       // Need to remove zero width space (u200B)
