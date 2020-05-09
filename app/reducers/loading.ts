@@ -1,5 +1,5 @@
 // eslint-disable-next-line default-param-last
-export default function loadingReducer(state = false, action) {
+export default function loadingReducer(state = false, action: any) {
   switch (action.type) {
     case 'LOADING_START':
       return true;
