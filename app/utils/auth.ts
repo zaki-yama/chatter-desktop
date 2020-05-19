@@ -64,7 +64,7 @@ export default async function startAuth() {
       code_verifier: verifier
     })
   });
-  return ret.data;
+  return normalizeTokens(ret.data);
 }
 
 export async function fetchNewAccessToken(refreshToken: string) {
