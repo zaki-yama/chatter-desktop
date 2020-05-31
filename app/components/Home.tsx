@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { Component } from 'react';
 import { Button, Icon } from 'react-lightning-design-system';
 import Feed from '../containers/Feed';
