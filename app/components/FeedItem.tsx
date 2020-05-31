@@ -5,10 +5,13 @@ import { parseFeedItemBody } from '../utils/bodyParser';
 
 import FeedComment from '../containers/FeedComment';
 
+import { FeedComment as FeedCommentType } from '../types/FeedComment';
+import { FeedItem as FeedItemType } from '../types/FeedItem';
+
 const DEFAULT_COMMENT_SIZE = 1;
 
 type Props = {
-  item: any;
+  item: FeedItemType;
   instanceUrl: string;
   accessToken: string;
 };
@@ -89,7 +92,7 @@ function Content(props: ContentProps) {
   return (
     <div
       className="slds-post__content slds-text-longform"
-      dangerouslySetInnerHTML={{ __html: props.text }}
+      dangerouslySetInnerHTML={{ __html: props.text || '' }}
     />
   );
 }
@@ -147,7 +150,7 @@ function Footer() {
 }
 
 type CommentProps = {
-  items: any;
+  items: FeedCommentType[];
   instanceUrl: string;
 };
 
@@ -204,8 +207,12 @@ export default class FeedItem extends Component<Props> {
         <article className="slds-post">
           <Header
             id={this.props.item.id}
+            // FIXME
+            // @ts-ignore
             name={this.props.item.actor.displayName}
+            // @ts-ignore
             actorId={this.props.item.actor.id}
+            // @ts-ignore
             photoUrl={`${this.props.item.actor.photo.smallPhotoUrl}?oauth_token=${this.props.accessToken}`}
             relativeCreatedDate={this.props.item.relativeCreatedDate}
             instanceUrl={this.props.instanceUrl}

@@ -1,11 +1,10 @@
-// @ts-nocheck
 import React, { Component } from 'react';
 import { Spinner as ReactLDSSpinner } from 'react-lightning-design-system';
-// import type { FeedItem as FeedItemPropsType } from '../types/FeedItem';
 import FeedItem from '../containers/FeedItem';
+import { FeedItem as FeedItemType } from '../types/FeedItem';
 
 type Props = {
-  feedItems: any;
+  feedItems: FeedItemType[];
   instanceUrl: string;
   loading: boolean;
   onMount: () => void;
@@ -23,7 +22,7 @@ function Spinner() {
 const RELOAD_INTERVAL = 15 * 60 * 1000;
 
 export default class Feed extends Component<Props> {
-  intervalId: IntervalID;
+  intervalId!: NodeJS.Timeout;
 
   static defaultProps = {
     loading: false,
