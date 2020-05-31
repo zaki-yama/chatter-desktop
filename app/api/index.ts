@@ -1,6 +1,5 @@
 import jsforce, { Connection } from 'jsforce';
 import { fetchNewAccessToken } from '../utils/auth';
-// import type { Tokens } from '../types';
 
 type FetchFeedElementsResult = {
   elements: object[];
