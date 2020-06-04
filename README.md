@@ -1,5 +1,4 @@
-Yet Another Chatter Desktop
-===========================
+# Yet Another Chatter Desktop
 
 ### Unofficial Chatter Desktop App made with Electron
 
@@ -13,11 +12,11 @@ Yet Another Chatter Desktop
 
 Go to https://github.com/zaki-yama/chatter-desktop/releases and download `.dmg` file of the latest version.
 
-**Note: For Mac users only. For users of other OS, please package by yourself by reading [How to Develop locally](#how-to-develop-locally) and [Packageing](#packaging) section.**
+**Note: For Mac users only. For users of other OS, please package by yourself by reading [Development](#Development) and [Packageing](#Packaging) section.**
 
-## How to Develop Locally
+## Development
 
-* **Note: requires a node version >= 7 and an npm version >= 4.**
+- **Note: requires a node version >= 7 and an npm version >= 4.**
 
 First, clone the repo via git:
 
@@ -31,6 +30,7 @@ And then install dependencies with yarn.
 $ cd chatter-desktop
 $ yarn
 ```
+
 **Note**: If you can't use [yarn](https://github.com/yarnpkg/yarn), run `npm install`.
 
 ## Run
@@ -38,14 +38,14 @@ $ yarn
 Start the app in the `dev` environment. This starts the renderer process in [**hot-module-replacement**](https://webpack.js.org/guides/hmr-react/) mode and starts a webpack dev server that sends hot updates to the renderer process:
 
 ```bash
-$ npm run dev
+$ yarn dev
 ```
 
 Alternatively, you can run the renderer and main processes separately. This way, you can restart one process without waiting for the other. Run these two commands **simultaneously** in different console tabs:
 
 ```bash
-$ npm run start-renderer-dev
-$ npm run start-main-dev
+$ yarn start-renderer-dev
+$ yarn start-main-dev
 ```
 
 ## Packaging
@@ -53,7 +53,7 @@ $ npm run start-main-dev
 To package apps for the local platform:
 
 ```bash
-$ npm run package
+$ yarn package
 ```
 
 To package apps for all platforms:
@@ -61,28 +61,17 @@ To package apps for all platforms:
 First, refer to [Multi Platform Build](https://www.electron.build/multi-platform-build) for dependencies.
 
 Then,
-```bash
-$ npm run package-all
-```
-
-To package apps with options:
 
 ```bash
-$ npm run package -- --[option]
-```
-
-To run End-to-End Test
-
-```bash
-$ npm run build
-$ npm run test-e2e
+$ yarn package-all
 ```
 
 :bulb: You can debug your production build with devtools by simply setting the `DEBUG_PROD` env variable:
+
 ```bash
-DEBUG_PROD=true npm run package
+DEBUG_PROD=true yarn package
 ```
 
-
 ## License
+
 MIT © [Shingo Yamazaki](https://github.com/zaki-yama)
