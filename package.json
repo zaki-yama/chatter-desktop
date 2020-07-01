@@ -163,7 +163,7 @@
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
     "@babel/register": "^7.10.4",
-    "@cybozu/eslint-config": "^10.0.3",
+    "@cybozu/eslint-config": "^10.0.4",
     "@types/base64-url": "^2.2.0",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
