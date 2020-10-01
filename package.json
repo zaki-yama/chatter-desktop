@@ -180,7 +180,7 @@
     "@types/react-test-renderer": "^16.9.3",
     "@types/redux-logger": "^3.0.8",
     "@types/sinon": "^7.5.2",
-    "@types/tapable": "^1.0.5",
+    "@types/tapable": "^1.0.6",
     "@types/vfile-message": "^2.0.0",
     "@types/webpack": "^4.41.3",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
