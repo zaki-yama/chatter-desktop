@@ -204,7 +204,7 @@
     "electron-rebuild": "^1.10.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
-    "enzyme-to-json": "^3.4.4",
+    "enzyme-to-json": "^3.6.1",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-typescript": "^7.2.1",
     "eslint-config-erb": "^0.3.0",
