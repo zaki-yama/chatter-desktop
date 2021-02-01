@@ -203,7 +203,7 @@
     "electron-devtools-installer": "^2.2.4",
     "electron-rebuild": "^1.10.0",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.1",
     "eslint": "^7.16.0",
     "eslint-config-airbnb-typescript": "^7.2.1",
